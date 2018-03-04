@@ -11,7 +11,7 @@ def get_data(symbols, dates):
     df = pd.DataFrame(index=dates)
 
     if 'SPY' not in symbols:
-        symbols.index(0, 'SPY')
+        symbols.insert(0, 'SPY')
 
     for symbol in symbols:
         dftmp = pd.read_csv(symbol_to_path(symbol),
