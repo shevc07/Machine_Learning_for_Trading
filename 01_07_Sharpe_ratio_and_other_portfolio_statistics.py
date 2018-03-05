@@ -43,7 +43,7 @@ def p02_daily_portfolio_values():
     print(daily_rets)
 
     # 累计收益
-    cum_ret = compute_cumulative_return(port_vals)
+    cum_ret = utils.compute_cumulative_return(port_vals)
     print("cum_ret: {}".format(cum_ret))
     # avg daily returns
     avg_daily_rets = daily_rets.mean()
@@ -52,7 +52,7 @@ def p02_daily_portfolio_values():
     std_daily_ret = daily_rets.std()
     print("std_daily_ret: {}".format(std_daily_ret))
     # sharpe ratio
-    sr = compute_sharpe_ratio(daily_rets)
+    sr = utils.compute_sharpe_ratio(daily_rets)
     print("sr: {}".format(sr))
 
 
