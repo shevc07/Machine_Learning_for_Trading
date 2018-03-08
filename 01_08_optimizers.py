@@ -50,6 +50,23 @@ def p09_fit_a_line_to_given_data_points():
     plt.show()
 
 
+def error_poly(C, data):
+    err = np.sum((data[:, 1] - np.polyval(C, data[:, 0])) ** 2)
+    return err
+
+
+def fit_poly(data, error_func, degree=3):
+    Cguess = np.poly1d(np.ones(degree+1, dtype=np.float32))
+
+    x=np.linspace(-5, 5, 21)
+    plt.plot(x, np.polyval(Cguess, x), 'm--', linewidth=2.0, label="initial guess")
+
+    result = spo.minimize(error_func, Cguess, args=(data, ), method='SLSQP', options={'disp': True})
+
+    return np.poly1d(result.x)
+
+
+
 def test_run():
     p09_fit_a_line_to_given_data_points()
 
